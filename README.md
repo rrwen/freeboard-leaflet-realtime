@@ -76,29 +76,6 @@ cd freeboard-leaflet-realtime
 npm install
 ```
 
-### Tests
-
-1. Clone into current path `git clone https://github.com/rrwen/freeboard-leaflet-realtime`
-2. Enter into folder `cd freeboard-leaflet-realtime`
-3. Ensure [devDependencies](https://docs.npmjs.com/files/package.json#devdependencies) are installed and available
-4. Run tests
-5. Results are saved to [tests/log](tests/log) with each file corresponding to a version tested
-
-```
-npm install
-npm test
-```
-
-### Documentation
-
-Use [documentationjs](https://www.npmjs.com/package/documentation) to generate html documentation in the `docs` folder:
-
-```
-npm run docs
-```
-
-See [JSDoc style](http://usejsdoc.org/) for formatting syntax.
-
 ### Upload to Github
 
 1. Ensure [git](https://git-scm.com/) is installed
@@ -114,14 +91,10 @@ git push
 ### Upload to npm
 
 1. Update the version in `package.json`
-2. Run tests and check for OK status
-3. Generate documentation
-4. Login to npm
-5. Publish to npm
+2. Login to npm
+3. Publish to npm
 
 ```
-npm test
-npm run docs
 npm login
 npm publish
 ```
@@ -132,17 +105,15 @@ The module [freeboard-leaflet-realtime](https://www.npmjs.com/package/freeboard-
 
 npm | Purpose
 --- | ---
-component | description
-component | description
-component | description
-component | description
+[freeboard](https://www.npmjs.com/package/freeboard) | Base dashboard that accepts this plugin
+[leaflet](http://leafletjs.com/) | Web map providing tiles and layers
+[leaflet-realtime](https://www.npmjs.com/package/leaflet-realtime) | Real time layers for leaflet
+
 
 ```
-component   <-- detail
+freeboard   <-- base dashboard
     |
-component   <-- detail
+leaflet   <-- Add leaflet webmap to dashboard pane
     |
-component   <-- detail
-    |
-component   <-- detail
+leaflet-realtime	<-- Add realtime layer to leaflet
 ```
