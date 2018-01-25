@@ -19,32 +19,24 @@ Freeboard plugin for real time Leaflet web maps
 
 1. Install [git](https://git-scm.com/)
 2. Clone [freeboard](https://github.com/Freeboard/freeboard)
-3. Edit `freeboard/index.html` to include the `freeboard-leaflet-realtime` plugin
 
 ```
 git clone https://github.com/Freeboard/freeboard.git
-```
-
-Add a line under `head.js` in `freeboard/index.html`:
-
-```
-head.js(...,
-	,
-	...)
 ```
 
 For the latest developer version, see [Developer Install](#developer-install).
 
 ## Usage
 
-An example usage of freeboard-leaflet-realtime:
+After [cloning freeboard](#install), edit `head.js` in `freeboard/index.html` to include the `freeboard-leaflet-realtime` plugin:
 
 ```javascript
-var freeboardleafletrealtime = require('freeboard-leaflet-realtime');
+head.js(...,
+	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/5ee6c887/index.js',
+	...)
 ```
 
-See [Documentation](https://rrwen.github.io/freeboard-leaflet-realtime) for more details.
-
+Open `freeboard/index.html` to use the new plugin.
 
 ## Contributions
 

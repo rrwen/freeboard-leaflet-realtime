@@ -1,9 +1,6 @@
 // Richard Wen
 // rrwen.dev@gmail.com
 
-// Richard Wen
-// rrwen.dev@gmail.com
-
 // (define) Widget definition
 freeboard.loadWidgetPlugin({
 		
@@ -42,7 +39,7 @@ freeboard.loadWidgetPlugin({
 			},
 			{
 				name: 'height',
-				display_name: 'Map Height',
+				display_name: 'Widget Height',
 				type: 'number',
 				default_value: 5
 			},
