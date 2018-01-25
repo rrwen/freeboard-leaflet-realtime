@@ -47,7 +47,43 @@ freeboard.loadWidgetPlugin({
 				name: 'height',
 				display_name: 'Widget Height',
 				type: 'number',
-				default_value: 5
+				default_value: 8
+			},
+			{
+				name: 'radius',
+				display_name: 'Radius Style',
+				type: 'number',
+				default_value: 4
+			},
+			{
+				name: 'color',
+				display_name: 'Color Style',
+				type: 'text',
+				default_value: '#FFFFFF'
+			},
+			{
+				name: 'weight',
+				display_name: 'Weight Style',
+				type: 'number',
+				default_value: 0
+			},
+			{
+				name: 'opacity',
+				display_name: 'Opacity Style',
+				type: 'number',
+				default_value: 0
+			},
+			{
+				name: 'fillColor',
+				display_name: 'Fill Color Style',
+				type: 'text',
+				default_value: '#FF9900'
+			},
+			{
+				name: 'fillOpacity',
+				display_name: 'Fill Opacity Style',
+				type: 'number',
+				default_value: 1
 			},
 			{
 				name: 'basemap',
@@ -135,6 +171,16 @@ var widget = function(settings) {
 				interval: current.interval * 1000,
 				getFeatureId: function(feature) {
 					return feature.properties[current.propertiesID];
+				},
+				pointToLayer: function(feature, latlng) {
+					return L.circleMarker(latlng, {
+						radius: current.radius,
+						color: current.color,
+						weight: current.weight,
+						opacity: current.opacity,
+						fillColor: current.fillColor,
+						fillOpacity: current.fillOpacity
+					});
 				}
 			}).addTo(map);
 		};

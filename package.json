@@ -1,6 +1,6 @@
 {
   "name": "freeboard-leaflet-realtime",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Freeboard plugin for real time Leaflet web maps",
   "main": "index.js",
   "scripts": {},
