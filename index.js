@@ -137,7 +137,7 @@ var widget = function(settings) {
 					return feature.properties[current.propertiesID]
 				}
 			}).addTo(map);
-		};`
+		};
 
 		// (widget_height) Return expected height of widget
 		self.getHeight = function() {
