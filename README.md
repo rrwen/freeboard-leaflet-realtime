@@ -3,8 +3,6 @@
 Richard Wen  
 rrwen.dev@gmail.com  
 
-* [Documentation](https://rrwen.github.io/freeboard-leaflet-realtime)
-
 Freeboard plugin for real time Leaflet web maps
 
 [![npm version](https://badge.fury.io/js/freeboard-leaflet-realtime.svg)](https://badge.fury.io/js/freeboard-leaflet-realtime)
