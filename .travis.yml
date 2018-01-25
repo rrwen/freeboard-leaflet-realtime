@@ -7,8 +7,3 @@ node_js:
   - "6"
 install:
   - npm install
-script:
-  - npm run docs
-  - npm test
-after_success:
-  - npm run coverage

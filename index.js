@@ -9,8 +9,8 @@ freeboard.loadWidgetPlugin({
 		
 		// (define_info) Widget information
 		'type_name'   : 'leaflet_realtime',
-		'display_name': 'Realtime Leaflet Webmap',
-        'description' : 'Create a realtime <a href="http://leafletjs.com/" target="_blank">Leaflet</a> webmap widget by fetching and updating data from a <a href="https://en.wikipedia.org/wiki/URL" target="_blank">URL</a> with <a href="https://github.com/perliedman/leaflet-realtime" target="_blank">leaflet-realtime</a>.',
+		'display_name': 'Leaflet Map (Real Time)',
+        'description' : 'Create a real time <a href="http://leafletjs.com/" target="_blank">Leaflet</a> webmap widget by fetching and updating data from a <a href="https://en.wikipedia.org/wiki/URL" target="_blank">URL</a> with <a href="https://github.com/perliedman/leaflet-realtime" target="_blank">leaflet-realtime</a>.<br><br><b>Note:</b>You must recreate the web map if you wish to change the settings.',
 		'fill_size' : true,
 		
 		// (define_scripts) Load external scripts before widget
@@ -26,7 +26,25 @@ freeboard.loadWidgetPlugin({
 				name: 'id',
 				display_name: 'ID',
 				type: 'text',
-				default_value: 'map'
+				default_value: 'leaflet-realtime'
+			},
+			{
+				name: 'url',
+				display_name: 'Data Source URL',
+				type: 'text',
+				default_value: 'https://wanderdrone.appspot.com/'
+			},
+			{
+				name: 'interval',
+				display_name: 'Refresh Interval (sec)',
+				type: 'number',
+				default_value: 3
+			},
+			{
+				name: 'height',
+				display_name: 'Map Height',
+				type: 'number',
+				default_value: 5
 			},
 			{
 				name: 'basemap',
@@ -35,40 +53,34 @@ freeboard.loadWidgetPlugin({
 				default_value: 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png'
 			},
 			{
-				name: 'view',
-				display_name: 'Starting Point [Lat,Lon]',
-				type: 'array',
-				default_value: [0,0]
+				name: 'viewX',
+				display_name: 'Starting Latitude',
+				type: 'number',
+				default_value: 0
+			},
+			{
+				name: 'viewY',
+				display_name: 'Starting Longitude',
+				type: 'number',
+				default_value: 0
 			},
 			{
 				name: 'zoom',
 				display_name: 'Zoom Level',
-				type: 'array',
-				default_value: 13
-			},
-			{
-				name: 'url',
-				display_name: 'URL',
-				type: 'text',
-				default_value: 'https://wanderdrone.appspot.com/'
-			},
-			{
-				name: 'interval',
-				display_name: 'Interval (sec)',
 				type: 'number',
-				default_value: 3
+				default_value: 2
 			},
 			{
-				name: 'height',
-				display_name: 'Height',
+				name: 'zoomMin',
+				display_name: 'Minimum Zoom',
 				type: 'number',
-				default_value: 5
+				default_value: 2
 			},
 			{
-				name: 'attribution',
-				display_name: 'Attribution',
-				type: 'text',
-				default_value: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
+				name: 'zoomMax',
+				display_name: 'Maximum Zoom',
+				type: 'number',
+				default_value: 19
 			}
 		],
 		
@@ -79,53 +91,60 @@ freeboard.loadWidgetPlugin({
 });
 
 // (widget) Widget implementation
-var widget = function(settings)
-	{
+var widget = function(settings) {
+	
+		// (widget_vars) Widget variables
 		var self = this;
 		var current = settings;
-		var div = $('<div id="' + current.id + '"></div>');
+		var div = $('<div></div>');
 		var map, realtime;
 
 		// (widget_render) Render webmap
 		self.render = function(container) {
 			
 			// (widget_render_html) Add div to widget
+			div.attr('id', current.id);
+			$(div).attr('style', 'width: 100%; height: 100vh; z-index: 1;');
 			$(container).append(div);
-			$(div).attr('style', 'width: 100%; height: 100vh;');
-			$(div).attr('z-order', '-1');
 			
-			map = L.map(current.id).setView(current.view, current.zoom);
-
+			// (widget_render_remove) Remove non compatible tools
+			$(container).parent().find('[data-bind="pluginEditor: {operation: \'edit\', type: \'widget\'}"]').remove();
+			$(container).parent().find('.sub-section-tools').remove();
+			$(container).parent().parent().parent().find('[data-bind="pluginEditor: {operation: \'edit\', type: \'pane\'}"]').remove();
+			$(container).parent().parent().parent().find('[data-bind="pluginEditor: {operation: \'add\', type: \'widget\'}"]').remove();
+			
+			// (widget_render_map) Create leaflet map
+			map = L.map(current.id).setView([current.viewX, current.viewY], current.zoom);
+			
+			// (widget_render_tiles) Create leaflet base tiles
 			L.tileLayer(current.basemap, {
-				attribution: current.attribution
-				subdomains: 'abcd',
-				maxZoom: 19
+				minZoom: current.zoomMin,
+				maxZoom: current.zoomMax
 			}).addTo(map);
 			
+			// (widget_render_realtime) Create realtime map layer
 			realtime = L.realtime({
-				url: 'https://wanderdrone.appspot.com/',
+				url: current.url,
 				crossOrigin: true,
 				type: 'json'
-			}, {
-				interval: 3 * 1000
+			},
+			{
+				interval: current.interval * 1000
 			}).addTo(map);
-		}
+		};
 
 		// (widget_height) Return expected height of widget
 		self.getHeight = function() {
 			return current.height;
-		}
+		};
 
-		// (widget_change) Settings changed
-		self.onSettingsChanged = function(changed) {
-			current = changed;
-			$(div).attr('id', changed.id);
-		}
+		// (widget_change) Settings changed - currently disabled
+		self.onSettingsChanged = function(changed) {};
 
 		// (widget_dispose) Remove and clean up widget
 		self.onDispose = function() {
-			map.remove();
 			realtime.stop();
-			realtime.remove();
-		}
-}
+			map.remove();
+			$(div).remove();
+		};
+};

@@ -9,7 +9,6 @@ Freeboard plugin for real time Leaflet web maps
 
 [![npm version](https://badge.fury.io/js/freeboard-leaflet-realtime.svg)](https://badge.fury.io/js/freeboard-leaflet-realtime)
 [![Build Status](https://travis-ci.org/rrwen/freeboard-leaflet-realtime.svg?branch=master)](https://travis-ci.org/rrwen/freeboard-leaflet-realtime)
-[![Coverage Status](https://coveralls.io/repos/github/rrwen/freeboard-leaflet-realtime/badge.svg?branch=master)](https://coveralls.io/github/rrwen/freeboard-leaflet-realtime?branch=master)
 [![npm](https://img.shields.io/npm/dt/freeboard-leaflet-realtime.svg)](https://www.npmjs.com/package/freeboard-leaflet-realtime)
 [![GitHub license](https://img.shields.io/github/license/rrwen/freeboard-leaflet-realtime.svg)](https://github.com/rrwen/freeboard-leaflet-realtime/blob/master/LICENSE)
 [![Donarbox Donate](https://img.shields.io/badge/donate-Donarbox-yellow.svg)](https://donorbox.org/rrwen)
@@ -18,11 +17,20 @@ Freeboard plugin for real time Leaflet web maps
 
 ## Install
 
-1. Install [Node.js](https://nodejs.org/en/)
-2. Install [freeboard-leaflet-realtime](https://www.npmjs.com/package/freeboard-leaflet-realtime) via `npm`
+1. Install [git](https://git-scm.com/)
+2. Clone [freeboard](https://github.com/Freeboard/freeboard)
+3. Edit `freeboard/index.html` to include the `freeboard-leaflet-realtime` plugin
 
 ```
-npm install --save freeboard-leaflet-realtime
+git clone https://github.com/Freeboard/freeboard.git
+```
+
+Add a line under `head.js` in `freeboard/index.html`:
+
+```
+head.js(...,
+	,
+	...)
 ```
 
 For the latest developer version, see [Developer Install](#developer-install).
@@ -48,6 +56,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 ## Developer Notes
 
 ### Developer Install
+
+Install from `npm`:
+
+1. Install [Node.js](https://nodejs.org/en/)
+2. Install [freeboard-leaflet-realtime](https://www.npmjs.com/package/freeboard-leaflet-realtime) via `npm`
+
+```
+npm install --save freeboard-leaflet-realtime
+```
 
 Install the latest developer version with `npm` from github:
 

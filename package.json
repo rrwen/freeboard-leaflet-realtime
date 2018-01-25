@@ -3,12 +3,7 @@
 	"version": "0.0.0",
 	"description": "Freeboard plugin for real time Leaflet web maps",
 	"main": "index.js",
-	"scripts": {
-		"coverage": "istanbul cover node_modules/tape/bin/tape tests/test.js && cat ./coverage/lcov.info | coveralls",
-		"docs": "documentation build */**.js -f html -o docs",
-		"istanbul": "istanbul cover node_modules/tape/bin/tape tests/test.js",
-		"test": "node ./tests/test.js"
-	  },
+	"scripts": {},
 	"directories": {
 		"test": "tests"
 	},
@@ -23,10 +18,7 @@
 	},
 	"homepage": "https://github.com/rrwen/freeboard-leaflet-realtime#readme",
 	"devDependencies": {
-		"coveralls": "^3.0.0",
-		"documentation": "^5.3.3",
-		"istanbul": "^0.4.5",
-		"moment": "^2.19.1",
-		"tape": "^4.8.0"
-	}
+		"freeboard": "github:Freeboard/freeboard"
+	},
+	"dependencies": {}
 }
