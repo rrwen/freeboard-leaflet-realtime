@@ -111,9 +111,9 @@ npm | Purpose
 
 
 ```
-freeboard   <-- base dashboard
-    |
-leaflet   <-- Add leaflet webmap to dashboard pane
-    |
-leaflet-realtime	<-- Add realtime layer to leaflet
+   freeboard        <-- base dashboard
+       |
+    leaflet         <-- Add leaflet webmap to dashboard pane
+       |
+leaflet-realtime    <-- Add realtime layer to leaflet
 ```
