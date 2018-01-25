@@ -32,7 +32,7 @@ After [cloning freeboard](#install), edit `head.js` in `freeboard/index.html` to
 
 ```javascript
 head.js(...,
-	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/7c86752b/index.js',
+	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/b84f99f8/index.js',
 	...)
 ```
 
