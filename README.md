@@ -17,9 +17,11 @@ Freeboard plugin for real time Leaflet web maps
 
 1. Install [git](https://git-scm.com/)
 2. Clone [freeboard](https://github.com/Freeboard/freeboard)
+3. Change into directory `freeboard`
 
 ```
 git clone https://github.com/Freeboard/freeboard.git
+cd freeboard
 ```
 
 For the latest developer version, see [Developer Install](#developer-install).
@@ -30,7 +32,7 @@ After [cloning freeboard](#install), edit `head.js` in `freeboard/index.html` to
 
 ```javascript
 head.js(...,
-	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/5ee6c887/index.js',
+	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/16eb2e42/index.js',
 	...)
 ```
 
