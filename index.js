@@ -7,7 +7,7 @@ freeboard.loadWidgetPlugin({
 		// (define_info) Widget information
 		'type_name'   : 'leaflet_realtime',
 		'display_name': 'Leaflet Map (Real Time)',
-        'description' : 'Create a real time <a href="http://leafletjs.com/" target="_blank">Leaflet</a> webmap widget by fetching and updating data from a <a href="https://en.wikipedia.org/wiki/URL" target="_blank">URL</a> with <a href="https://github.com/perliedman/leaflet-realtime" target="_blank">leaflet-realtime</a>.<br><br><b>Note:</b>You must recreate the web map if you wish to change the settings.',
+        'description' : 'Create a real time <a href="http://leafletjs.com/" target="_blank">Leaflet</a> webmap widget by fetching and updating <a href="http://geojson.org/" target="_blank">GeoJSON</a> data from a <a href="https://en.wikipedia.org/wiki/URL" target="_blank">URL</a> with <a href="https://github.com/perliedman/leaflet-realtime" target="_blank">leaflet-realtime</a>.<br><br><b>Note:</b>You must recreate the web map if you wish to change the settings.',
 		'fill_size' : true,
 		
 		// (define_scripts) Load external scripts before widget
@@ -21,7 +21,7 @@ freeboard.loadWidgetPlugin({
 		'settings'    : [
 			{
 				name: 'id',
-				display_name: 'ID',
+				display_name: 'Map ID',
 				type: 'text',
 				default_value: 'leaflet-realtime'
 			},
@@ -30,6 +30,12 @@ freeboard.loadWidgetPlugin({
 				display_name: 'Data Source URL',
 				type: 'text',
 				default_value: 'https://wanderdrone.appspot.com/'
+			},
+			{
+				name: 'propertiesID',
+				display_name: 'Data Source Properties ID',
+				type: 'text',
+				default_value: 'id'
 			},
 			{
 				name: 'interval',
@@ -127,6 +133,9 @@ var widget = function(settings) {
 			},
 			{
 				interval: current.interval * 1000
+				getFeatureId: function(feature) {
+					return feature.properties[current.propertiesID]
+				}
 			}).addTo(map);
 		};
 
