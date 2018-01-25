@@ -31,12 +31,14 @@ For the latest developer version, see [Developer Install](#developer-install).
 After [cloning freeboard](#install), edit `head.js` in `freeboard/index.html` to include the `freeboard-leaflet-realtime` plugin:
 
 ```javascript
-head.js(...,
-	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/b84f99f8/index.js',
-	...)
+head.js(
+	...,
+	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/46770476/index.js',
+	...,
+);
 ```
 
-Open `freeboard/index.html` to use the new plugin.
+Open `freeboard/index.html` to use the added plugin.
 
 ## Contributions
 
