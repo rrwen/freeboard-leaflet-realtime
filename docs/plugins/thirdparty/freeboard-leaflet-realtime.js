@@ -183,10 +183,9 @@ var widget = function(settings) {
 					});
 				}
 			}).addTo(map);
-			$(div).resize(function() {
-			  setTimeout(function() {map.invalidateSize()}, 2000);
-			});
-			setTimeout(function() {map.invalidateSize()}, 500);
+			 setInterval(function () {
+				 map.invalidateSize()
+			 }, 500);
 		};
 
 		// (widget_height) Return expected height of widget
