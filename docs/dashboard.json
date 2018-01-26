@@ -1,0 +1,101 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [],
+	"panes": [
+		{
+			"title": "Information",
+			"width": 1,
+			"row": {
+				"2": 1,
+				"3": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "html",
+					"settings": {
+						"html": "<div style=\"padding: 10px;\">\n    <b>Dashboard</b>: <a href=\"https://github.com/Freeboard/freeboard\" target=\"_blank\">Freeboard</a><br>\n    <b>Plugin</b>: <a href=\"https://github.com/rrwen/freeboard-leaflet-realtime\" target=\"_blank\">freeboard-leaflet-realtime</a><br>\n    <b>Author</b>: <a href=\"https://github.com/rrwen\" target=\"_blank\">Richard Wen</a><br>\n</div>",
+						"height": 1
+					}
+				}
+			]
+		},
+		{
+			"title": "Longitude, Latitude",
+			"width": 1,
+			"row": {
+				"2": 5,
+				"3": 1
+			},
+			"col": {
+				"2": 1,
+				"3": 2
+			},
+			"col_width": 2,
+			"widgets": [
+				{
+					"type": "text_widget",
+					"settings": {
+						"size": "regular",
+						"value": "datasources[\"wanderdrone\"][\"geometry\"][\"coordinates\"][0].toFixed(5) + ', ' + datasources[\"wanderdrone\"][\"geometry\"][\"coordinates\"][1].toFixed(5)",
+						"animate": true,
+						"units": "degrees"
+					}
+				}
+			]
+		},
+		{
+			"title": "Example",
+			"width": 1,
+			"row": {
+				"3": 5
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 3,
+			"widgets": [
+				{
+					"type": "leaflet_realtime",
+					"settings": {
+						"id": "leaflet-realtime",
+						"url": "https://wanderdrone.appspot.com/",
+						"propertiesID": "id",
+						"interval": 3,
+						"height": 10,
+						"radius": 4,
+						"color": "#FFFFFF",
+						"weight": 0,
+						"opacity": 0,
+						"fillColor": "#FF9900",
+						"fillOpacity": 1,
+						"basemap": "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png",
+						"viewX": 0,
+						"viewY": 0,
+						"zoom": 2,
+						"zoomMin": 2,
+						"zoomMax": 19
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "wanderdrone",
+			"type": "JSON",
+			"settings": {
+				"url": "https://wanderdrone.appspot.com/",
+				"use_thingproxy": true,
+				"refresh": 5,
+				"method": "GET"
+			}
+		}
+	],
+	"columns": 3
+}
