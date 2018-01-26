@@ -3,7 +3,7 @@
 Richard Wen  
 rrwen.dev@gmail.com  
 
-* [Example](https://rrwen.github.io/freeboard-leaflet-realtime/)
+* [Demo](https://rrwen.github.io/freeboard-leaflet-realtime/)
 
 Freeboard plugin for real time Leaflet web maps
 
