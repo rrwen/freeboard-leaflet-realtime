@@ -1,12 +1,15 @@
 {
   "name": "freeboard-leaflet-realtime",
-  "version": "0.2.0",
+  "version": "0.2.5",
   "description": "Freeboard plugin for real time Leaflet web maps",
   "main": "index.js",
-  "scripts": {},
-  "directories": {
-    "test": "tests"
+  "scripts": {
+    "freeboard2docs": "git submodule add https://github.com/Freeboard/freeboard.git docs",
+	"freeboard2docs-update": "cd docs && git pull",
+	"index2docs-win": "copy \"index.js\" \"docs\\plugins\\thirdparty\\freeboard-leaflet-realtime.js\"",
+	"index2docs-linux": "cp index.js docs/plugins/thirdparty/freeboard-leaflet-realtime.js"
   },
+  "directories": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rrwen/freeboard-leaflet-realtime.git"
