@@ -183,7 +183,7 @@ var widget = function(settings) {
 					});
 				}
 			}).addTo(map);
-			$(div).attr('style', 'width: 99%; height: 100vh; z-index: 1;');
+			setTimeout(function() {map.invalidateSize()}, 1000);
 		};
 
 		// (widget_height) Return expected height of widget
