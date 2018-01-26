@@ -1,9 +1,9 @@
 # freeboard-leaflet-realtime
 
-* [Example](https://rrwen.github.io/freeboard-leaflet-realtime/)
-
 Richard Wen  
 rrwen.dev@gmail.com  
+
+* [Example](https://rrwen.github.io/freeboard-leaflet-realtime/)
 
 Freeboard plugin for real time Leaflet web maps
 
