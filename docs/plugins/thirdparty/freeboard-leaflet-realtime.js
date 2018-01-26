@@ -183,8 +183,8 @@ var widget = function(settings) {
 					});
 				}
 			}).addTo(map);
-			$(window).resize(function() {
-			  setTimeout(function() {map.invalidateSize()}, 500);
+			$(div).resize(function() {
+			  setTimeout(function() {map.invalidateSize()}, 2000);
 			});
 			setTimeout(function() {map.invalidateSize()}, 500);
 		};
