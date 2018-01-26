@@ -184,7 +184,7 @@ var widget = function(settings) {
 				}
 			}).addTo(map);
 			$(window).resize(function() {
-			  map.invalidateSize();
+			  setTimeout(function() {map.invalidateSize()}, 500);
 			});
 			setTimeout(function() {map.invalidateSize()}, 500);
 		};
