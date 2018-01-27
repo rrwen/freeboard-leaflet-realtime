@@ -7,12 +7,10 @@
 			"title": "Information",
 			"width": 1,
 			"row": {
-				"2": 1,
-				"3": 1
+				"1": 1
 			},
 			"col": {
-				"2": 1,
-				"3": 1
+				"1": 1
 			},
 			"col_width": 1,
 			"widgets": [
@@ -26,23 +24,32 @@
 			]
 		},
 		{
-			"title": "Longitude, Latitude",
+			"title": "Position",
 			"width": 1,
 			"row": {
-				"2": 5,
-				"3": 1
+				"2": 2
 			},
 			"col": {
-				"2": 1,
-				"3": 2
+				"2": 2
 			},
-			"col_width": 2,
+			"col_width": 1,
 			"widgets": [
 				{
 					"type": "text_widget",
 					"settings": {
+						"title": "Longitude",
 						"size": "regular",
-						"value": "datasources[\"wanderdrone\"][\"geometry\"][\"coordinates\"][0].toFixed(5) + ', ' + datasources[\"wanderdrone\"][\"geometry\"][\"coordinates\"][1].toFixed(5)",
+						"value": "datasources[\"wanderdrone\"][\"geometry\"][\"coordinates\"][0].toFixed(3)",
+						"animate": true,
+						"units": "degrees"
+					}
+				},
+				{
+					"type": "text_widget",
+					"settings": {
+						"title": "Latitude",
+						"size": "regular",
+						"value": "datasources[\"wanderdrone\"][\"geometry\"][\"coordinates\"][1].toFixed(3)",
 						"animate": true,
 						"units": "degrees"
 					}
@@ -50,15 +57,17 @@
 			]
 		},
 		{
-			"title": "Example",
-			"width": 1,
+			"title": "Demo",
+			"width": 3,
 			"row": {
-				"3": 5
-			},
-			"col": {
+				"2": 1,
 				"3": 1
 			},
-			"col_width": 3,
+			"col": {
+				"2": 1,
+				"3": 1
+			},
+			"col_width": 2,
 			"widgets": [
 				{
 					"type": "leaflet_realtime",
@@ -67,7 +76,7 @@
 						"url": "https://wanderdrone.appspot.com/",
 						"propertiesID": "id",
 						"interval": 3,
-						"height": 10,
+						"height": 8,
 						"radius": 4,
 						"color": "#FFFFFF",
 						"weight": 0,
@@ -97,5 +106,5 @@
 			}
 		}
 	],
-	"columns": 3
+	"columns": 4
 }
