@@ -17,30 +17,36 @@ Freeboard plugin for real time Leaflet web maps
 
 ## Install
 
-1. Install [git](https://git-scm.com/)
-2. Clone [freeboard](https://github.com/Freeboard/freeboard)
-3. Change into directory `freeboard`
+1. Install [Node.js](https://nodejs.org) and [git](https://git-scm.com/)
+2. Clone [freeboard](https://github.com/Freeboard/freeboard) and change directory
+3. Install [freeboard-leaflet-realtime](https://github.com/rrwen/freeboard-leaflet-realtime) via `npm`
 
 ```
 git clone https://github.com/Freeboard/freeboard.git
 cd freeboard
+npm install --save freeboard-leaflet-realtime
 ```
 
-For the latest developer version, see [Developer Install](#developer-install).
+For the latest developer version, see [Developer Install](NOTES.md#developer-install).
 
 ## Usage
 
-After [cloning freeboard](#install), edit `head.js` in `freeboard/index.html` to include the `freeboard-leaflet-realtime` plugin:
+**Step 1.** After [cloning freeboard](#install) and installing [freeboard-leaflet-realtime](https://github.com/rrwen/freeboard-leaflet-realtime), you should have the following files:
+
+* `freeboard/index.html`
+* `freeboard/node_modules/freeboard-leaflet-realtime/index.js`
+
+**Step 2.** Edit the `head.js()` function in `freeboard/index.html` to add the plugin:
 
 ```javascript
 head.js(
 	...,
-	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/46770476/index.js',
-	...,
+	'node_modules/freeboard-leaflet-realtime/index.js',
+	...
 );
 ```
 
-Open `freeboard/index.html` to use the added plugin.
+**Step 3.** Open `freeboard/index.html` to use the added plugin interactively.
 
 ## Contributions
 
@@ -49,61 +55,7 @@ Open `freeboard/index.html` to use the added plugin.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
 
-## Developer Notes
-
-### Developer Install
-
-Install from `npm`:
-
-1. Install [Node.js](https://nodejs.org/en/)
-2. Install [freeboard-leaflet-realtime](https://www.npmjs.com/package/freeboard-leaflet-realtime) via `npm`
-
-```
-npm install --save freeboard-leaflet-realtime
-```
-
-Install the latest developer version with `npm` from github:
-
-```
-npm install git+https://github.com/rrwen/freeboard-leaflet-realtime
-```
-  
-Install from `git` cloned source:
-
-1. Ensure [git](https://git-scm.com/) is installed
-2. Clone into current path
-3. Install via `npm`
-
-```
-git clone https://github.com/rrwen/freeboard-leaflet-realtime
-cd freeboard-leaflet-realtime
-npm install
-```
-
-### Upload to Github
-
-1. Ensure [git](https://git-scm.com/) is installed
-2. Inside the `freeboard-leaflet-realtime` folder, add all files and commit changes
-3. Push to github
-
-```
-git add .
-git commit -a -m "Generic update"
-git push
-```
-
-### Upload to npm
-
-1. Update the version in `package.json`
-2. Login to npm
-3. Publish to npm
-
-```
-npm login
-npm publish
-```
-
-### Implementation
+## Implementation
 
 The module [freeboard-leaflet-realtime](https://www.npmjs.com/package/freeboard-leaflet-realtime) uses the following npm packages for its implementation:
 
@@ -121,3 +73,5 @@ npm | Purpose
        |
 leaflet-realtime    <-- Add realtime layer to leaflet
 ```
+
+For more information, see [Developer Notes](NOTES.md).
