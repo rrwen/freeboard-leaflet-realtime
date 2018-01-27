@@ -46,6 +46,16 @@ head.js(
 );
 ```
 
+If you require a Content Delivery Network (CDN) link, you may use the following [rawgit](https://rawgit.com/) CDN without an `npm` install:
+
+```javascript
+head.js(
+	...,
+	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/46f4d983/index.js',
+	...
+);
+```
+
 **Step 3.** Open `freeboard/index.html` to use the added plugin interactively.
 
 ## Contributions

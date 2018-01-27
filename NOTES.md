@@ -2,15 +2,6 @@
 
 ### Developer Install
 
-Install from `npm`:
-
-1. Install [Node.js](https://nodejs.org/en/)
-2. Install [freeboard-leaflet-realtime](https://www.npmjs.com/package/freeboard-leaflet-realtime) via `npm`
-
-```
-npm install --save freeboard-leaflet-realtime
-```
-
 Install the latest developer version with `npm` from github:
 
 ```
