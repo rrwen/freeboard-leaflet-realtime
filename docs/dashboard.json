@@ -85,7 +85,7 @@
 						"id": "leaflet-realtime",
 						"url": "https://wanderdrone.appspot.com/",
 						"propertiesID": "id",
-						"interval": 3,
+						"interval": 1,
 						"height": 8,
 						"radius": 4,
 						"color": "#FFFFFF",
@@ -111,7 +111,7 @@
 			"settings": {
 				"url": "https://wanderdrone.appspot.com/",
 				"use_thingproxy": true,
-				"refresh": 5,
+				"refresh": 1,
 				"method": "GET"
 			}
 		}
