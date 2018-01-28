@@ -172,6 +172,13 @@ var widget = function(settings) {
 				getFeatureId: function(feature) {
 					return feature.properties[current.propertiesID];
 				},
+				style: {
+					color: current.color,
+					weight: current.weight,
+					opacity: current.opacity,
+					fillColor: current.fillColor,
+					fillOpacity: current.fillOpacity
+				},
 				pointToLayer: function(feature, latlng) {
 					return L.circleMarker(latlng, {
 						radius: current.radius,
