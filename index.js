@@ -201,7 +201,7 @@ var widget = function(settings) {
 						var popupHTML = '';
 						for (var k in feature.properties) {
 							if (feature.properties[k]) {
-								popupHTML += '<p style="word-wrap: break-word; white-space: normal;"><b>' + k + '</b>: ' + feature.properties[k] +  '</p><br>';
+								popupHTML += '<p style="word-wrap: break-word; white-space: normal;"><b>' + k + '</b>: ' + feature.properties[k] +  '</p>';
 							}
 						}
 						layer.bindPopup(popupHTML);
