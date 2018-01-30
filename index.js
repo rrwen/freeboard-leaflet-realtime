@@ -141,6 +141,7 @@ var widget = function(settings) {
 		// (widget_vars) Widget variables
 		var self = this;
 		var current = settings;
+		current.popup = current.popup || true;
 		var div = $('<div></div>');
 		var map, realtime;
 
