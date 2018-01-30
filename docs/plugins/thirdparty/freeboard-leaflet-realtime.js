@@ -141,6 +141,7 @@ var widget = function(settings) {
 		// (widget_vars) Widget variables
 		var self = this;
 		var current = settings;
+		current.popup = current.popup || true;
 		var div = $('<div></div>');
 		var map, realtime;
 
@@ -200,7 +201,7 @@ var widget = function(settings) {
 						var popupHTML = '';
 						for (var k in feature.properties) {
 							if (feature.properties[k]) {
-								popupHTML += '<b>' + k + '</b>: ' + '<p>' + feature.properties[k] +  '</p><br>';
+								popupHTML += '<p style="word-wrap: break-word; white-space: normal;"><b>' + k + '</b>: ' + feature.properties[k] +  '</p><br>';
 							}
 						}
 						layer.bindPopup(popupHTML);
