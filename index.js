@@ -120,6 +120,12 @@ freeboard.loadWidgetPlugin({
 				display_name: 'Maximum Zoom',
 				type: 'number',
 				default_value: 19
+			},
+			{
+				name: "popup",
+				display_name: "Popup",
+				type: "boolean",
+				default_value: true
 			}
 		],
 		
@@ -188,6 +194,17 @@ var widget = function(settings) {
 						fillColor: current.fillColor,
 						fillOpacity: current.fillOpacity
 					});
+				},
+				onEachFeature: function (feature, layer) {
+					if (current.popup && feature.properties) {
+						var popupHTML = '';
+						for (var k in feature.properties) {
+							if (feature.properties[k]) {
+								popupHTML += '<b>' + k + '</b>: ' + '<p>' + feature.properties[k] +  '</p><br>';
+							}
+						}
+						layer.bindPopup(popupHTML);
+					}
 				}
 			}).addTo(map);
 			setTimeout(function () {

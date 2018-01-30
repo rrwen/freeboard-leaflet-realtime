@@ -98,7 +98,8 @@
 						"viewY": 0,
 						"zoom": 2,
 						"zoomMin": 2,
-						"zoomMax": 19
+						"zoomMax": 19,
+						"popup": true
 					}
 				}
 			]
