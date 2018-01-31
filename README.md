@@ -51,7 +51,7 @@ If you require a Content Delivery Network (CDN) link, you may use the following 
 ```javascript
 head.js(
 	...,
-	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/b466494e/index.js',
+	'https://cdn.rawgit.com/rrwen/freeboard-leaflet-realtime/b1ac4665/index.js',
 	...
 );
 ```
