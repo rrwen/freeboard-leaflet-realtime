@@ -151,7 +151,7 @@ freeboard.loadWidgetPlugin({
 				name: 'searchZoom',
 				display_name: 'Search Zoom',
 				type: 'number',
-				default_value: 15
+				default_value: 17
 			},
 			{
 				name: 'searchHide',
@@ -175,7 +175,7 @@ var widget = function(settings) {
 		var current = settings;
 		current.popup = current.popup || true;
 		current.search = current.search || true;
-		current.searchZoom = current.searchZoom || 15;
+		current.searchZoom = current.searchZoom || 17;
 		current.searchPosition = current.searchPosition || 'topleft';
 		current.searchHide = current.searchHide || false;
 		current.zoomPosition = current.zoomPosition || 'topright';

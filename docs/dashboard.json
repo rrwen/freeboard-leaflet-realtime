@@ -102,7 +102,7 @@
 						"zoomMax": 19,
 						"popup": true,
 						"search": true,
-						"searchZoom": 19,
+						"searchZoom": 17,
 						"searchPosition": "topleft",
 						"searchHide": false
 					}
