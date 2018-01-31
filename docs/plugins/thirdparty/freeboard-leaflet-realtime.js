@@ -14,7 +14,9 @@ freeboard.loadWidgetPlugin({
 		'external_scripts': [
 			'https://unpkg.com/leaflet@1.3.1/dist/leaflet.css',
 			'https://unpkg.com/leaflet@1.3.1/dist/leaflet.js',
-			'https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.1.1/leaflet-realtime.js'
+			'https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.1.1/leaflet-realtime.js',
+			'https://cdn.rawgit.com/stefanocudini/leaflet-search/a88dc07e/src/leaflet-search.css',
+			'https://cdn.rawgit.com/stefanocudini/leaflet-search/a88dc07e/src/leaflet-search.js'
 		],
 		
 		// (define_settings) User interface settings
@@ -104,6 +106,12 @@ freeboard.loadWidgetPlugin({
 				default_value: 0
 			},
 			{
+				name: 'zoomPosition',
+				display_name: 'Zoom Control Position',
+				type: 'text',
+				default_value: 'topright'
+			},
+			{
 				name: 'zoom',
 				display_name: 'Zoom Level',
 				type: 'number',
@@ -122,10 +130,34 @@ freeboard.loadWidgetPlugin({
 				default_value: 19
 			},
 			{
-				name: "popup",
-				display_name: "Popup",
+				name: 'popup',
+				display_name: 'Popup',
 				type: "boolean",
 				default_value: true
+			},
+			{
+				name: 'search',
+				display_name: 'Search',
+				type: 'boolean',
+				default_value: true
+			},
+			{
+				name: 'searchPosition',
+				display_name: 'Search Position',
+				type: 'text',
+				default_value: 'topleft'
+			},
+			{
+				name: 'searchZoom',
+				display_name: 'Search Zoom',
+				type: 'number',
+				default_value: 11
+			},
+			{
+				name: 'searchHide',
+				display_name: 'Search Hide Point',
+				type: 'boolean',
+				default_value: false
 			}
 		],
 		
@@ -142,6 +174,11 @@ var widget = function(settings) {
 		var self = this;
 		var current = settings;
 		current.popup = current.popup || true;
+		current.search = current.search || true;
+		current.searchZoom = current.searchZoom || 10;
+		current.searchPosition = current.searchPosition || 'topleft';
+		current.searchHide = current.searchHide || false;
+		current.zoomPosition = current.zoomPosition || 'topright';
 		var div = $('<div></div>');
 		var map, realtime;
 
@@ -160,13 +197,42 @@ var widget = function(settings) {
 			$(container).parent().parent().parent().find('[data-bind="pluginEditor: {operation: \'add\', type: \'widget\'}"]').remove();
 			
 			// (widget_render_map) Create leaflet map
-			map = L.map(current.id).setView([current.viewX, current.viewY], current.zoom);
+			map = L.map(current.id, {zoomControl: false}).setView([current.viewX, current.viewY], current.zoom);
+			L.control.zoom({position: current.zoomPosition}).addTo(map);
 			
 			// (widget_render_tiles) Create leaflet base tiles
 			L.tileLayer(current.basemap, {
 				minZoom: current.zoomMin,
 				maxZoom: current.zoomMax
 			}).addTo(map);
+			
+			// (widget_render_search) Create search button
+			if (current.search) {
+				map.addControl(new L.Control.Search({
+					position: current.searchPosition,
+					collapsed: true,
+					url: 'http://nominatim.openstreetmap.org/search?format=json&q={s}',
+					jsonpParam: 'json_callback',
+					propertyName: 'display_name',
+					propertyLoc: ['lat','lon'],
+					hideMarkerOnCollapse: current.searchHide,
+					minLength: 2,
+					textPlaceholder: 'Search Location...', 
+					marker: {
+								icon: false,
+								animate: true,
+								circle: {
+									radius: current.radius + 2,
+									weight: current.weight + 1,
+									color: current.fillColor,
+									fill: false
+								}
+					},
+					moveToLocation: function(latlng, title, map) {
+						map.setView(latlng, current.searchZoom);
+					}
+				}));
+			}
 			
 			// (widget_render_realtime) Create realtime map layer
 			realtime = L.realtime({

@@ -97,9 +97,14 @@
 						"viewX": 0,
 						"viewY": 0,
 						"zoom": 2,
+						"zoomPosition": "topright",
 						"zoomMin": 2,
 						"zoomMax": 19,
-						"popup": true
+						"popup": true,
+						"search": true,
+						"searchZoom": 19,
+						"searchPosition": "topleft",
+						"searchHide": false
 					}
 				}
 			]
